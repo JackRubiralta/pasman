@@ -15,12 +15,12 @@ def generate_pepper() -> bytes:
     return os.urandom(32)
 
 class Cipher():
-    def __init__(self, cipher: bytes, key: bytes, pepper: bytes) -> None:
+    def __init__(self, cipher: bytes, mKey: bytes, pepper: bytes) -> None:
         self.salt: bytes = generate_salt()
-        self.cipher: bytes = encrypt(cipher, key, self.salt, pepper)
+        self.cipher: bytes = encrypt(cipher, mKey, self.salt, pepper)
 
-    def decrypted(self, key: bytes, pepper: bytes) -> bytes:
-        return decrypt(self.cipher, key, self.salt, pepper)
+    def decrypted(self, mKey: bytes, pepper: bytes) -> bytes:
+        return decrypt(self.cipher, mKey, self.salt, pepper)
 
     def __repr__(self) -> str:
         return self.cipher.decode()
