@@ -1,0 +1,17 @@
+password123
+
+add YouTube JackR not_password1
+add Github Jalrux randompass123
+edit YouTube login JRubiralta
+
+associated = generate_associated()
+nonce = generate_nonce()
+salt = generate_salt()
+
+text = b"hello world"
+key = digest_key(b"password123", generate_salt())
+print(len(key))
+ciphertext = encrypt(text, key, nonce, associated, salt)
+print(f"{ciphertext=}")
+plaintext = decrypt(ciphertext, key, nonce, associated, salt)
+print(f"{plaintext=}")
