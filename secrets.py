@@ -25,5 +25,8 @@ class Secret:
     def __repr__(self) -> str:
         return f"<Name='{self.name}', Login='{self.login}', Password='{self.password}'>"
 
+    def to_str(self, mKey: bytes) -> str:
+        return f"<Name='{self.get_name(mKey)}', Login='{self.get_login(mKey)}', Password='{self.get_password(mKey)}'>"
+
     def __iter__(self) -> list[Cipher]:
         return iter([self.name, self.login, self.password])

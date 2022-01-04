@@ -3,9 +3,8 @@ from encryption import *
 class MasterKey:
     def __init__(self, password: str) -> None:
         self.cSalt: bytes = generate_salt()
-        self.salt: bytes = generate_salt()
         
-        self.verifier: bytes = Cipher(b"entered-master-correct", self.hash_password(password), self.salt, b"peppery-pepper")
+        self.verifier: bytes = Cipher(b"entered-master-correct", self.hash_password(password), generate_salt(), b"peppery-pepper")
 
     def verify_key(self, mKey: bytes) -> bool:
         try:
